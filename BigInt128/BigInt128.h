@@ -9,16 +9,18 @@ public:
 	BigInt();
 	BigInt(char *);	
 	BigInt(unsigned long long);
-	BigInt(const BigInt&);//consist of a point
-	~BigInt();
+	BigInt& operator<<= (size_t offset);
 	BigInt& operator+=(const BigInt&);
 	BigInt& operator-=(const BigInt&);
 	BigInt& operator*=(const BigInt&);
+	BigInt& operator/=(const BigInt&);
 	
 private:
 	size_t size;
-	bitset<MAX_BITS> *bits;
+	bitset<MAX_BITS> bits;
 };
 BigInt operator+(const BigInt&, const BigInt&);
 BigInt operator-(const BigInt&, const BigInt&);
 BigInt operator*(const BigInt&, const BigInt&);
+BigInt operator/(const BigInt&, const BigInt&);
+BigInt operator<<(BigInt&, size_t offset);
